@@ -1,9 +1,13 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import '@/ui/styles/globals.css';
-
 import { DESCRIPTION, DOMAIN, TITLE } from '@/lib/constants/site';
+
+import { TailwindIndicator } from '@/ui/components/others/TailwindIndicator';
+import { ThemeToggle } from '@/ui/components/others/ThemeToggle';
+import { ThemeProvider } from '@/ui/components/providers/ThemeProvider';
+
+import '@/ui/styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,6 +22,15 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
 
   metadataBase: new URL(DOMAIN),
+
+  authors: [
+    {
+      name: TITLE,
+      url: DOMAIN,
+    },
+  ],
+
+  creator: TITLE,
 
   openGraph: {
     title: TITLE,
@@ -53,10 +66,18 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head />
 
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider>
+          {children}
+
+          <ThemeToggle />
+
+          <TailwindIndicator />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

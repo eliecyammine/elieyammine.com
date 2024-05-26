@@ -1,11 +1,12 @@
 /// ---------- || HOME PAGE || ---------- ///
+import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <h2 className="mb-3 text-2xl font-semibold">Home Page</h2>
-      </div>
-    </main>
+    <div className="space-x-3">
+      <h2 className="text-2xl font-semibold">Home Page</h2>
+      <Link href="/about">About</Link>
+      <Link href="/projects">Projects</Link>
+    </div>
   );
 }
