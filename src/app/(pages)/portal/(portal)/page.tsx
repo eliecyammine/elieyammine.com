@@ -5,17 +5,17 @@ import { DESCRIPTION } from '@/lib/constants/site';
 /// ---------- || METADATA || ---------- ///
 
 export const metadata: Metadata = {
-  title: 'Projects',
+  title: 'Portal',
 
   description: DESCRIPTION,
 };
 
-/// ---------- || PROJECTS PAGE || ---------- ///
+/// ---------- || PORTAL PAGE || ---------- ///
 
-export default function ProjectsPage() {
+export default function PortalPage() {
   return (
     <div className="flex flex-col justify-center">
-      <h2 className="text-2xl font-semibold">Projects Page</h2>
+      <h2 className="text-2xl font-semibold">Portal Page</h2>
     </div>
   );
 }

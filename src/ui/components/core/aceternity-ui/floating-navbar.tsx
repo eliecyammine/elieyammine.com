@@ -3,10 +3,10 @@
 import React, { useState } from 'react';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { GanttChartIcon, XIcon } from 'lucide-react';
+import { DownloadIcon, GanttChartIcon, XIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
@@ -23,6 +23,7 @@ export const FloatingNavbar = ({
   }[];
   className?: string;
 }) => {
+  const router = useRouter();
   const pathname = usePathname();
 
   const [active, setActive] = useState(false);
@@ -47,8 +48,27 @@ export const FloatingNavbar = ({
     }
   });
 
+  const [pressTimer, setPressTimer] = useState<string | number | NodeJS.Timeout | undefined>(
+    undefined,
+  );
+
+  const handleMouseDown = () => {
+    const timer = setTimeout(() => {
+      router.push('/portal/login');
+    }, 1000);
+    setPressTimer(timer);
+  };
+
+  const handleMouseUp = () => {
+    clearTimeout(pressTimer);
+  };
+
+  const handleMouseLeave = () => {
+    clearTimeout(pressTimer);
+  };
+
   return (
-    <div className="relative">
+    <div className="relative z-50">
       <AnimatePresence>
         <motion.div
           key="header"
@@ -64,7 +84,7 @@ export const FloatingNavbar = ({
             duration: 0.2,
           }}
           className={cn(
-            'fixed inset-x-0 top-5 z-[5000] mx-6 flex max-w-fit items-center justify-center rounded-full border border-transparent bg-background py-2 pl-5 pr-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] dark:border-border sm:top-10 sm:mx-auto sm:space-x-4 sm:pl-8',
+            'fixed inset-x-0 top-5 mx-6 flex max-w-fit items-center justify-center rounded-full border border-transparent bg-background py-2 pl-5 pr-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] dark:border-border sm:top-10 sm:mx-auto sm:space-x-4 sm:pl-8',
             className,
           )}
         >
@@ -90,9 +110,12 @@ export const FloatingNavbar = ({
               </button>
 
               <Link
+                onMouseDown={index === 0 ? handleMouseDown : undefined}
+                onMouseUp={index === 0 ? handleMouseUp : undefined}
+                onMouseLeave={index === 0 ? handleMouseLeave : undefined}
                 href={navItem.link}
                 className={cn(
-                  'relative flex items-center space-x-1 py-2 transition-colors hover:text-muted-foreground',
+                  'relative flex items-center py-2 transition-colors hover:text-muted-foreground',
                 )}
               >
                 <span
@@ -105,16 +128,25 @@ export const FloatingNavbar = ({
                 </span>
 
                 {index !== 0 && pathname === navItem.link && (
-                  <span className="absolute inset-x-0 -bottom-px mx-auto h-px bg-gradient-to-r from-transparent via-blue-500  to-transparent" />
+                  <span className="absolute inset-x-0 -bottom-px mx-auto h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
                 )}
               </Link>
             </div>
           ))}
 
-          <button className="relative !cursor-pointer rounded-full border border-border px-4 py-2 text-sm font-medium hover:bg-accent">
-            <span>Resume</span>
+          <button
+            onClick={() => {
+              console.log('Resume Downloaded!');
+            }}
+            className="relative !cursor-pointer rounded-full border border-border px-4 py-2 text-sm font-medium hover:bg-accent"
+          >
+            <div className="flex flex-row items-center gap-2">
+              <DownloadIcon size={16} />
 
-            <span className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500  to-transparent" />
+              <span>Resume</span>
+            </div>
+
+            <span className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
           </button>
         </motion.div>
 
@@ -132,7 +164,7 @@ export const FloatingNavbar = ({
               restSpeed: 0.001,
             }}
           >
-            <div className="absolute left-10 top-20 mt-1 sm:hidden">
+            <div className="fixed left-10 top-20 mt-1 sm:hidden">
               <motion.div
                 transition={{
                   type: 'spring',
@@ -159,7 +191,7 @@ export const FloatingNavbar = ({
                                 setActive(!active);
                               }}
                               className={cn(
-                                'relative flex items-center space-x-1 p-3 transition-colors hover:text-muted-foreground',
+                                'relative flex items-center p-3 transition-colors hover:text-muted-foreground',
                               )}
                             >
                               <span className="!cursor-pointer text-sm">{navItem.name}</span>

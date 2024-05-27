@@ -13,5 +13,9 @@ export const metadata: Metadata = {
 /// ---------- || ABOUT PAGE || ---------- ///
 
 export default function AboutPage() {
-  return <h2 className="text-2xl font-semibold">About Page</h2>;
+  return (
+    <div className="flex flex-col justify-center">
+      <h2 className="text-2xl font-semibold">About Page</h2>
+    </div>
+  );
 }
