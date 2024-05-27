@@ -1,3 +1,15 @@
+import type { Metadata } from 'next';
+
+import { DESCRIPTION } from '@/lib/constants/site';
+
+/// ---------- || METADATA || ---------- ///
+
+export const metadata: Metadata = {
+  title: 'About',
+
+  description: DESCRIPTION,
+};
+
 /// ---------- || ABOUT PAGE || ---------- ///
 
 export default function AboutPage() {
