@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 
+import { aboutData } from '@/data/about.data';
+
 import { DESCRIPTION } from '@/lib/constants/site';
+import { cn } from '@/lib/utils';
+
+import { BentoGrid, BentoGridItem } from '@/ui/components/core/aceternity-ui/bento-grid';
 
 /// ---------- || METADATA || ---------- ///
 
@@ -14,8 +19,23 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col justify-center">
-      <h2 className="text-2xl font-semibold">About Page</h2>
+    <div className="flex flex-col items-center">
+      <h3 className="mb-14 text-center text-2xl font-bold md:text-3xl lg:text-4xl">
+        Get to Know Me!
+      </h3>
+
+      <BentoGrid className="md:auto-rows-[20rem]">
+        {aboutData.map((data, i) => (
+          <BentoGridItem
+            key={i}
+            title={data.title}
+            description={data.description}
+            header={data.header}
+            className={cn('[&>p:text-lg]', data.className)}
+            icon={data.icon}
+          />
+        ))}
+      </BentoGrid>
     </div>
   );
 }

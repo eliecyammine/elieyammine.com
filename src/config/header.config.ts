@@ -14,4 +14,8 @@ export const headerItems = [
     name: 'Projects',
     link: '/projects',
   },
+  {
+    name: 'Blog',
+    link: '/blog',
+  },
 ];

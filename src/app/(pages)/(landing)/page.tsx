@@ -14,7 +14,7 @@ export default function HomePage() {
 
         <TextGenerateEffect
           words="I'm Elie, a Full Stack Software Developer crafting seamless web and mobile experiences that captivate and engage. Let's build something amazing together!"
-          className="m-4 mb-8 text-center text-sm md:text-lg lg:text-xl"
+          className="m-4 mb-12 text-center text-sm md:text-lg lg:text-xl"
         />
 
         <a href="mailto:eliecyammine@gmail.com">

@@ -5,18 +5,18 @@ import { DESCRIPTION } from '@/lib/constants/site';
 /// ---------- || METADATA || ---------- ///
 
 export const metadata: Metadata = {
-  title: 'Projects',
+  title: 'Blog',
 
   description: DESCRIPTION,
 };
 
-/// ---------- || PROJECTS PAGE || ---------- ///
+/// ---------- || BLOG PAGE || ---------- ///
 
-export default function ProjectsPage() {
+export default function BlogPage() {
   return (
     <div className="flex flex-col justify-center">
       <h3 className="mb-14 text-center text-2xl font-bold md:text-3xl lg:text-4xl">
-        What I&apos;ve Built!
+        My Blog Space!
       </h3>
     </div>
   );
