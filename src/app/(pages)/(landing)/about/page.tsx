@@ -6,6 +6,7 @@ import { DESCRIPTION } from '@/lib/constants/site';
 import { cn } from '@/lib/utils';
 
 import { BentoGrid, BentoGridItem } from '@/ui/components/core/aceternity-ui/bento-grid';
+import { TextGenerateEffect } from '@/ui/components/core/aceternity-ui/text-generate-effect';
 
 /// ---------- || METADATA || ---------- ///
 
@@ -20,9 +21,10 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="flex flex-col items-center">
-      <h3 className="mb-14 text-center text-2xl font-bold md:text-3xl lg:text-4xl">
-        Get to Know Me!
-      </h3>
+      <TextGenerateEffect
+        words="Get to Know Me!"
+        className="mb-14 text-center text-2xl font-bold md:text-3xl lg:text-4xl"
+      />
 
       <BentoGrid className="md:auto-rows-[20rem]">
         {aboutData.map((data, i) => (
