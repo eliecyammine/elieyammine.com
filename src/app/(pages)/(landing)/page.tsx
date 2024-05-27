@@ -1,6 +1,5 @@
 import { TextGenerateEffect } from '@/ui/components/core/aceternity-ui/text-generate-effect';
 import { TopGradientButton } from '@/ui/components/core/aceternity-ui/top-gradient-button';
-import Globe from '@/ui/components/others/Globe';
 
 /// ---------- || HOME PAGE || ---------- ///
 
@@ -15,16 +14,12 @@ export default function HomePage() {
 
         <TextGenerateEffect
           words="I'm Elie, a Full Stack Software Developer crafting seamless web and mobile experiences that captivate and engage. Let's build something amazing together!"
-          className="my-4 mb-8 text-center text-sm md:text-lg lg:text-2xl"
+          className="m-4 mb-8 text-center text-sm md:text-lg lg:text-xl"
         />
 
         <a href="mailto:eliecyammine@gmail.com">
           <TopGradientButton title="Get in touch!" />
         </a>
-      </div>
-
-      <div className="fixed inset-0 h-screen">
-        <Globe />
       </div>
     </div>
   );

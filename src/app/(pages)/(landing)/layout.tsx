@@ -14,11 +14,11 @@ interface LandingLayoutProps {
 export default function LandingLayout({ children }: Readonly<LandingLayoutProps>) {
   return (
     <>
-      <div className="fixed inset-0 flex size-full items-center justify-center bg-grid-black/[0.05] dark:bg-grid-white/[0.05]">
+      <div className="absolute inset-0 flex size-full items-center justify-center bg-grid-black/[0.05] dark:bg-grid-white/[0.05]">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
 
-      <Spotlight className="fixed -top-40 left-0 md:-top-20 md:left-60" fill="white" />
+      <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" fill="white" />
 
       <div className="relative overflow-hidden">
         <FloatingNavbar navItems={headerItems} />
