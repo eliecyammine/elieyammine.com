@@ -42,7 +42,7 @@ export const FloatingNavbar = ({
         if (direction < 0) {
           setVisible(true);
         } else {
-          setVisible(true);
+          pathname === '/about' ? setVisible(false) : setVisible(true);
         }
       }
     }

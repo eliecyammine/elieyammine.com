@@ -1,14 +1,28 @@
 import type { Metadata } from 'next';
 
-import { aboutData, educationData, experienceData } from '@/data/about.data';
-import { ChevronsDownIcon } from 'lucide-react';
+import {
+  aboutData,
+  educationData,
+  experienceData,
+  expertiseData,
+  techStackData,
+} from '@/data/about.data';
+import {
+  ChevronsDownIcon,
+  GithubIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  TwitterIcon,
+} from 'lucide-react';
 
 import { DESCRIPTION } from '@/lib/constants/site';
 import { cn } from '@/lib/utils';
 
 import { BentoGrid, BentoGridItem } from '@/ui/components/core/aceternity-ui/bento-grid';
+import { HoverEffect } from '@/ui/components/core/aceternity-ui/card-hover-effect';
 import { TextGenerateEffect } from '@/ui/components/core/aceternity-ui/text-generate-effect';
 import { TracingBeam } from '@/ui/components/core/aceternity-ui/tracing-beam';
+import { Button } from '@/ui/components/core/shadcn-ui/button';
 import { Separator } from '@/ui/components/core/shadcn-ui/separator';
 
 /// ---------- || METADATA || ---------- ///
@@ -53,11 +67,11 @@ export default function AboutPage() {
         <section id={data.slug} key={index}>
           <TextGenerateEffect
             words={data.sectionTitle}
-            className="mb-7 mt-32 text-center text-xl font-semibold md:text-2xl lg:text-3xl"
+            className="mb-7 mt-12 text-center text-xl font-semibold md:text-2xl lg:text-3xl"
           />
 
           {data.slug === 'my-story' && (
-            <div className="relative mx-auto max-w-xl items-center pt-4 antialiased">
+            <div className="relative mx-auto max-w-xl items-center pb-6 pt-4 antialiased">
               <div className={cn('relative mx-auto size-full max-w-4xl')}>
                 <div className="absolute -left-4 top-2 hidden md:-left-20 md:block">
                   <div className="ml-[27px] flex size-4 items-center justify-center rounded-full border border-neutral-200 shadow-sm">
@@ -86,11 +100,26 @@ export default function AboutPage() {
           )}
 
           {data.slug === 'expertise' && (
-            <div className="relative mx-auto max-w-xl items-center pt-4 antialiased"></div>
+            <div className="relative mx-auto flex max-w-xl flex-col items-center justify-center space-y-1.5 pb-6 pt-4 antialiased">
+              {expertiseData.map((data, index) => (
+                <div key={index} className="flex w-full">
+                  <div
+                    className={cn(
+                      'max-w-[75%] rounded-xl px-4 py-2',
+                      index % 2 === 0
+                        ? 'mr-auto bg-slate-800 text-right text-white'
+                        : 'ml-auto bg-slate-300 text-left text-black',
+                    )}
+                  >
+                    {data.title}
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
 
           {data.slug === 'journey-so-far' && (
-            <div className="relative mx-auto items-center pt-4 antialiased">
+            <div className="relative mx-auto items-center pb-6 pt-4 antialiased">
               <TracingBeam className="max-w-xl">
                 {experienceData.map((data, index) => (
                   <div key={`content-${index}`} className="mb-10">
@@ -116,11 +145,63 @@ export default function AboutPage() {
           )}
 
           {data.slug === 'tech-stack' && (
-            <div className="relative mx-auto max-w-xl items-center pt-4 antialiased"></div>
+            <div className="relative mx-auto max-w-xl items-center pb-6 pt-4 antialiased">
+              <HoverEffect items={techStackData} />
+
+              <p className="mt-2 text-center text-neutral-500">{'and more...'}</p>
+            </div>
           )}
 
           {data.slug === 'beyond-coding' && (
-            <div className="relative mx-auto max-w-xl items-center pt-4 antialiased"></div>
+            <div className="relative mx-auto flex max-w-xl flex-row items-center justify-center space-x-3 pb-6 pt-4 antialiased">
+              <a
+                title="LinkedIn Link"
+                target="_blank"
+                href="https://linkedin.com/in/elieyammine"
+                aria-label="LinkedIn"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline">
+                  <LinkedinIcon size={18} />
+                </Button>
+              </a>
+
+              <a
+                title="GitHub Link"
+                target="_blank"
+                href="https://github.com/eliecyammine"
+                aria-label="GitHub"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline">
+                  <GithubIcon size={18} />
+                </Button>
+              </a>
+
+              <a
+                title="X (Twitter) Link"
+                target="_blank"
+                href="https://twitter.com/eliecyammine"
+                aria-label="X (Twitter)"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline">
+                  <TwitterIcon size={18} />
+                </Button>
+              </a>
+
+              <a
+                title="Instagram Link"
+                target="_blank"
+                href="https://instagram.com/eliecyammine"
+                aria-label="Instagram"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline">
+                  <InstagramIcon size={18} />
+                </Button>
+              </a>
+            </div>
           )}
 
           {index === aboutData.length - 1 ? null : <Separator />}

@@ -233,3 +233,167 @@ export const educationData = [
     toDate: '2020',
   },
 ];
+
+export const expertiseData = [
+  {
+    title: 'Full-Stack Development',
+  },
+  {
+    title: 'Software Architecture Design',
+  },
+  {
+    title: 'Visual Design',
+  },
+  {
+    title: 'Task Management and Prioritization',
+  },
+  {
+    title: 'Business Management',
+  },
+  {
+    title: 'Research and Analysis',
+  },
+  {
+    title: 'Efficient Collaboration',
+  },
+];
+
+export const techStackData = [
+  {
+    title: 'HTML',
+
+    image: '',
+  },
+
+  {
+    title: 'CSS',
+
+    image: '',
+  },
+
+  {
+    title: 'Javascript',
+
+    image: '',
+  },
+
+  {
+    title: 'React',
+
+    image: '',
+  },
+
+  {
+    title: 'Node.js',
+
+    image: '',
+  },
+
+  {
+    title: 'Next.js',
+
+    image: '',
+  },
+
+  {
+    title: 'NestJs',
+
+    image: '',
+  },
+
+  {
+    title: 'Tailwind',
+
+    image: '',
+  },
+
+  {
+    title: 'Framer Motion',
+
+    image: '',
+  },
+
+  {
+    title: 'Dart',
+
+    image: '',
+  },
+
+  {
+    title: 'Flutter',
+
+    image: '',
+  },
+
+  {
+    title: 'PostgreSQL',
+
+    image: '',
+  },
+
+  {
+    title: 'MySQL',
+
+    image: '',
+  },
+
+  {
+    title: 'Vercel',
+
+    image: '',
+  },
+
+  {
+    title: 'AWS',
+
+    image: '',
+  },
+
+  {
+    title: 'Azure',
+
+    image: '',
+  },
+
+  {
+    title: 'GCP',
+
+    image: '',
+  },
+
+  {
+    title: 'WHM',
+
+    image: '',
+  },
+
+  {
+    title: 'Git',
+
+    image: '',
+  },
+
+  {
+    title: 'GitHub',
+
+    image: '',
+  },
+
+  {
+    title: 'Bitbucket',
+
+    image: '',
+  },
+
+  {
+    title: 'Adobe (AI)',
+
+    image: '',
+  },
+
+  {
+    title: 'Figma',
+
+    image: '',
+  },
+];
