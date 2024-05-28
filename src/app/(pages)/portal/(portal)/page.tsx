@@ -13,9 +13,5 @@ export const metadata: Metadata = {
 /// ---------- || PORTAL PAGE || ---------- ///
 
 export default function PortalPage() {
-  return (
-    <div className="flex flex-col justify-center">
-      <h2 className="text-2xl font-semibold">Portal Page</h2>
-    </div>
-  );
+  return <h2 className="text-2xl font-semibold">{'Portal Page'}</h2>;
 }

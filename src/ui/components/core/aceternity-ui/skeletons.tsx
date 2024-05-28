@@ -168,7 +168,7 @@ export const SkeletonFour = () => {
           Interactive & responsive UI/UX.
         </p>
 
-        <p className="mt-4 rounded-full border border-red-500 bg-red-100 px-2 py-0.5 text-xs text-red-600 dark:bg-red-900/20">
+        <p className="mt-4 rounded-full border border-red-500 bg-red-100 px-2 py-0.5 text-center text-xs text-red-600 dark:bg-red-900/20">
           Frontend
         </p>
       </motion.div>
@@ -184,8 +184,8 @@ export const SkeletonFour = () => {
           End-to-end seamless integration.
         </p>
 
-        <p className="mt-4 rounded-full border border-green-500 bg-green-100 px-2 py-0.5 text-xs text-green-600 dark:bg-green-900/20">
-          Full Stack
+        <p className="mt-4 rounded-full border border-green-500 bg-green-100 px-2 py-0.5 text-center text-xs text-green-600 dark:bg-green-900/20">
+          FullStack
         </p>
       </motion.div>
       <motion.div
@@ -203,7 +203,7 @@ export const SkeletonFour = () => {
           Robust server logic & APIs.
         </p>
 
-        <p className="mt-4 rounded-full border border-orange-500 bg-orange-100 px-2 py-0.5 text-xs text-orange-600 dark:bg-orange-900/20">
+        <p className="mt-4 rounded-full border border-orange-500 bg-orange-100 px-2 py-0.5 text-center text-xs text-orange-600 dark:bg-orange-900/20">
           Backend
         </p>
       </motion.div>

@@ -84,10 +84,21 @@ export const FloatingNavbar = ({
             duration: 0.2,
           }}
           className={cn(
-            'fixed inset-x-0 top-5 mx-6 flex max-w-fit items-center justify-center rounded-full border border-transparent bg-background py-2 pl-5 pr-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] dark:border-border sm:top-10 sm:mx-auto sm:space-x-4 sm:pl-8',
+            'fixed inset-x-0 top-5 mx-6 flex max-w-fit items-center justify-center rounded-full border border-transparent bg-background py-2 pl-5 pr-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] dark:border-border sm:top-10 sm:mx-auto sm:space-x-4',
             className,
           )}
         >
+          <button
+            onClick={() => {
+              setActive(!active);
+            }}
+            className={cn(
+              'relative mr-3.5 flex items-center transition-colors hover:text-muted-foreground sm:hidden',
+            )}
+          >
+            <span>{active ? <XIcon /> : <GanttChartIcon />}</span>
+          </button>
+
           {navItems.map((navItem, index: number) => (
             <div
               key={`link=${index}`}
@@ -97,17 +108,6 @@ export const FloatingNavbar = ({
               )}
             >
               {index !== 0 && <Separator orientation="vertical" />}
-
-              <button
-                onClick={() => {
-                  setActive(!active);
-                }}
-                className={cn(
-                  'relative mr-3.5 flex items-center transition-colors hover:text-muted-foreground sm:hidden',
-                )}
-              >
-                <span>{active ? <XIcon /> : <GanttChartIcon />}</span>
-              </button>
 
               <Link
                 onMouseDown={index === 0 ? handleMouseDown : undefined}

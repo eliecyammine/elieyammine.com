@@ -1,12 +1,15 @@
 import type { Metadata } from 'next';
 
-import { aboutData } from '@/data/about.data';
+import { aboutData, educationData, experienceData } from '@/data/about.data';
+import { ChevronsDownIcon } from 'lucide-react';
 
 import { DESCRIPTION } from '@/lib/constants/site';
 import { cn } from '@/lib/utils';
 
 import { BentoGrid, BentoGridItem } from '@/ui/components/core/aceternity-ui/bento-grid';
 import { TextGenerateEffect } from '@/ui/components/core/aceternity-ui/text-generate-effect';
+import { TracingBeam } from '@/ui/components/core/aceternity-ui/tracing-beam';
+import { Separator } from '@/ui/components/core/shadcn-ui/separator';
 
 /// ---------- || METADATA || ---------- ///
 
@@ -20,16 +23,17 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col">
       <TextGenerateEffect
-        words="Get to Know Me!"
+        words="💬 Get to Know Me!"
         className="mb-14 text-center text-2xl font-bold md:text-3xl lg:text-4xl"
       />
 
       <BentoGrid className="md:auto-rows-[20rem]">
-        {aboutData.map((data, i) => (
+        {aboutData.map((data, index) => (
           <BentoGridItem
-            key={i}
+            key={index}
+            slug={data.slug}
             title={data.title}
             description={data.description}
             header={data.header}
@@ -38,6 +42,90 @@ export default function AboutPage() {
           />
         ))}
       </BentoGrid>
+
+      <div className="mt-8 flex flex-col items-center space-y-1">
+        <p className="text-center text-neutral-600">Scroll down</p>
+
+        <ChevronsDownIcon size={20} className="text-neutral-600" />
+      </div>
+
+      {aboutData.map((data, index) => (
+        <section id={data.slug} key={index}>
+          <TextGenerateEffect
+            words={data.sectionTitle}
+            className="mb-7 mt-32 text-center text-xl font-semibold md:text-2xl lg:text-3xl"
+          />
+
+          {data.slug === 'my-story' && (
+            <div className="relative mx-auto max-w-xl items-center pt-4 antialiased">
+              <div className={cn('relative mx-auto size-full max-w-4xl')}>
+                <div className="absolute -left-4 top-2 hidden md:-left-20 md:block">
+                  <div className="ml-[27px] flex size-4 items-center justify-center rounded-full border border-neutral-200 shadow-sm">
+                    <div className="size-2 rounded-full border border-emerald-600 bg-emerald-500" />
+                  </div>
+                </div>
+                {educationData.map((data, index) => (
+                  <div key={`content-${index}`} className="mb-10">
+                    <div className="flex w-full flex-row items-start justify-between py-1">
+                      <h2 className="text-sm text-neutral-600 dark:text-neutral-400">
+                        {data.universityAbv}
+                      </h2>
+
+                      <h2 className="text-sm text-neutral-500">
+                        {data.fromDate} - {data.toDate}
+                      </h2>
+                    </div>
+
+                    <p className="mb-2 text-sm text-neutral-500">{data.university}</p>
+
+                    <h1 className="mb-4 text-xl font-semibold">_ {data.major}</h1>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {data.slug === 'expertise' && (
+            <div className="relative mx-auto max-w-xl items-center pt-4 antialiased"></div>
+          )}
+
+          {data.slug === 'journey-so-far' && (
+            <div className="relative mx-auto items-center pt-4 antialiased">
+              <TracingBeam className="max-w-xl">
+                {experienceData.map((data, index) => (
+                  <div key={`content-${index}`} className="mb-10">
+                    <div className="flex w-full flex-row items-start justify-between py-1">
+                      <h2 className="text-sm text-neutral-600 dark:text-neutral-400">
+                        {data.company}
+                      </h2>
+
+                      <h2 className="text-sm text-neutral-500">
+                        {data.fromDate} - {data.toDate}
+                      </h2>
+                    </div>
+
+                    <p className="mb-2 text-sm text-neutral-500">{data.location}</p>
+
+                    <h1 className="mb-4 text-xl font-semibold">_ {data.position}</h1>
+
+                    <div className="prose prose-sm text-sm">{data.description}</div>
+                  </div>
+                ))}
+              </TracingBeam>
+            </div>
+          )}
+
+          {data.slug === 'tech-stack' && (
+            <div className="relative mx-auto max-w-xl items-center pt-4 antialiased"></div>
+          )}
+
+          {data.slug === 'beyond-coding' && (
+            <div className="relative mx-auto max-w-xl items-center pt-4 antialiased"></div>
+          )}
+
+          {index === aboutData.length - 1 ? null : <Separator />}
+        </section>
+      ))}
     </div>
   );
 }

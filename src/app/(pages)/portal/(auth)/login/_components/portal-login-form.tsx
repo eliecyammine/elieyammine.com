@@ -17,9 +17,9 @@ export default function PortalLoginForm() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader className="items-center">
-        <CardTitle className="text-2xl">Portal Login</CardTitle>
+        <CardTitle className="text-2xl">{'Portal Login'}</CardTitle>
 
-        <CardDescription>Welcome back!</CardDescription>
+        <CardDescription>{'Welcome back!'}</CardDescription>
       </CardHeader>
 
       <CardFooter>
@@ -28,7 +28,7 @@ export default function PortalLoginForm() {
             <div className="flex flex-row items-center gap-2">
               <GithubIcon size={18} />
 
-              <span>Sign in with GitHub</span>
+              <span>{'Sign in with GitHub'}</span>
             </div>
           </Link>
         </Button>

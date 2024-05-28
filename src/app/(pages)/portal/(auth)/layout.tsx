@@ -16,7 +16,7 @@ interface PortalAuthLayoutProps {
 
 export default function PortalAuthLayout({ children }: Readonly<PortalAuthLayoutProps>) {
   return (
-    <div>
+    <>
       <Link
         href="/"
         className={cn(
@@ -37,6 +37,6 @@ export default function PortalAuthLayout({ children }: Readonly<PortalAuthLayout
       <main className="container flex min-h-screen items-center justify-center overflow-hidden">
         {children}
       </main>
-    </div>
+    </>
   );
 }

@@ -4,7 +4,15 @@ import { useEffect } from 'react';
 
 import { motion, stagger, useAnimate } from 'framer-motion';
 
-export const TextGenerateEffect = ({ words, className }: { words: string; className?: string }) => {
+export const TextGenerateEffect = ({
+  words,
+  fastAnimation,
+  className,
+}: {
+  words: string;
+  fastAnimation?: boolean;
+  className?: string;
+}) => {
   const [scope, animate] = useAnimate();
 
   const wordsArray = words.split(' ');
@@ -19,10 +27,10 @@ export const TextGenerateEffect = ({ words, className }: { words: string; classN
 
       {
         duration: 2,
-        delay: stagger(0.2),
+        delay: fastAnimation ? stagger(0.03) : stagger(0.2),
       },
     );
-  }, [animate]);
+  }, [animate, fastAnimation]);
 
   const renderWords = () => {
     return (

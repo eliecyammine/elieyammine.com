@@ -16,9 +16,9 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col">
       <TextGenerateEffect
-        words="My Blog Space!"
+        words="📝 My Blog Space!"
         className="mb-14 text-center text-2xl font-bold md:text-3xl lg:text-4xl"
       />
     </div>

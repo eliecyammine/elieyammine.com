@@ -16,9 +16,9 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col">
       <TextGenerateEffect
-        words=" What I've Built!"
+        words="👨🏻‍💻 What I've Built!"
         className="mb-14 text-center text-2xl font-bold md:text-3xl lg:text-4xl"
       />
     </div>

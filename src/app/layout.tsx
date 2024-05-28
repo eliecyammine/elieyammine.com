@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import { DESCRIPTION, DOMAIN, TITLE } from '@/lib/constants/site';
+import { cn } from '@/lib/utils';
 
 import { TailwindIndicator } from '@/ui/components/others/TailwindIndicator';
 import { ThemeToggle } from '@/ui/components/others/ThemeToggle';
@@ -9,7 +10,10 @@ import { ThemeProvider } from '@/ui/components/providers/ThemeProvider';
 
 import '@/ui/styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+});
 
 /// ---------- || METADATA || ---------- ///
 
@@ -33,7 +37,11 @@ export const metadata: Metadata = {
   creator: TITLE,
 
   openGraph: {
-    title: TITLE,
+    title: {
+      default: TITLE,
+      template: `%s | ${TITLE}`,
+    },
+
     description: DESCRIPTION,
 
     url: DOMAIN,
@@ -41,6 +49,10 @@ export const metadata: Metadata = {
 
     locale: 'en_US',
     type: 'website',
+  },
+
+  alternates: {
+    canonical: '/',
   },
 
   robots: {
@@ -69,9 +81,9 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
     <html lang="en" suppressHydrationWarning>
       <head />
 
-      <body className={inter.className}>
+      <body className={cn(inter.className, 'antialiased')}>
         <ThemeProvider>
-          {children}
+          <div className="min-h-screen flex-1 overflow-y-auto">{children}</div>
 
           <ThemeToggle />
 

@@ -10,6 +10,6 @@ export default function robots() {
 
     host: 'https://elieyammine.com',
 
-    //   sitemap: 'https://elieyammine.com/sitemap.xml',
+    // sitemap: 'https://elieyammine.com/sitemap.xml',
   };
 }
