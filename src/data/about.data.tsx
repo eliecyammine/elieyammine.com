@@ -308,7 +308,7 @@ export const techStackData = [
   },
 
   {
-    title: 'Framer Motion',
+    title: 'Framer M.',
 
     image: '',
   },

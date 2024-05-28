@@ -24,7 +24,7 @@ export default function LandingLayout({ children }: Readonly<LandingLayoutProps>
       <div className="relative overflow-hidden">
         <FloatingNavbar navItems={headerItems} />
 
-        <main className="container flex min-h-screen justify-center overflow-hidden pb-20 pt-36">
+        <main className="container flex min-h-screen justify-center overflow-hidden pb-20 pt-32 sm:pt-36">
           {children}
         </main>
       </div>

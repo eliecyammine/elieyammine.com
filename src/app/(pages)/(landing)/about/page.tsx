@@ -58,7 +58,7 @@ export default function AboutPage() {
       </BentoGrid>
 
       <div className="mt-8 flex flex-col items-center space-y-1">
-        <p className="text-center text-neutral-600">Scroll down</p>
+        <p className="text-center text-neutral-600">{'Scroll down'}</p>
 
         <ChevronsDownIcon size={20} className="text-neutral-600" />
       </div>
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 <div key={index} className="flex w-full">
                   <div
                     className={cn(
-                      'max-w-[75%] rounded-xl px-4 py-2',
+                      'max-w-[75%] rounded-xl px-4 py-2 text-sm font-medium md:text-base',
                       index % 2 === 0
                         ? 'mr-auto bg-slate-800 text-right text-white'
                         : 'ml-auto bg-slate-300 text-left text-black',
