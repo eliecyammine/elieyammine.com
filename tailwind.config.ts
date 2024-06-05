@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
-import { fontFamily } from 'tailwindcss/defaultTheme';
 
 const svgToDataUri = require('mini-svg-data-uri');
 
@@ -13,6 +12,8 @@ const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
 
   darkMode: ['class'],
+
+  safelist: ['dark', 'light'],
 
   prefix: '',
 
@@ -87,7 +88,8 @@ const config: Config = {
       },
 
       fontFamily: {
-        sans: ['var(--font-sans)', ...fontFamily.sans],
+        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-geist-mono)'],
       },
 
       typography: {

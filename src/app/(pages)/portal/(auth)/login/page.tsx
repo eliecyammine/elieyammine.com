@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { DESCRIPTION } from '@/lib/constants/site';
 
-import PortalLoginForm from './_components/portal-login-form';
+import PortalLoginSection from './_components/portal-login-section';
 
 /// ---------- || METADATA || ---------- ///
 
@@ -15,5 +15,5 @@ export const metadata: Metadata = {
 /// ---------- || PORTAL LOGIN PAGE || ---------- ///
 
 export default function PortalLoginPage() {
-  return <PortalLoginForm />;
+  return <PortalLoginSection />;
 }

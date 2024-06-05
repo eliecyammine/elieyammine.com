@@ -4,18 +4,36 @@ import { useEffect } from 'react';
 
 import { motion, stagger, useAnimate } from 'framer-motion';
 
+import { cn } from '@/lib/utils';
+
 export const TextGenerateEffect = ({
-  words,
+  text,
+  spanText,
+
+  isPageTitle,
+
   fastAnimation,
   className,
 }: {
-  words: string;
+  text: string;
+  spanText?: string;
+
+  isPageTitle?: boolean;
+
   fastAnimation?: boolean;
   className?: string;
 }) => {
   const [scope, animate] = useAnimate();
 
-  const wordsArray = words.split(' ');
+  const wordsArray = text.split(' ');
+  const spanWordsArray = spanText ? spanText.split(' ') : [];
+
+  const combinedWords = [
+    ...wordsArray.map((word) => ({ word, isSpan: false })),
+    ...spanWordsArray.map((word) => ({ word, isSpan: true })),
+  ];
+
+  const pageTitleStyle = 'mb-10 text-center text-2xl font-semibold md:text-3xl lg:text-4xl';
 
   useEffect(() => {
     animate(
@@ -35,10 +53,13 @@ export const TextGenerateEffect = ({
   const renderWords = () => {
     return (
       <motion.div ref={scope}>
-        {wordsArray.map((word, index) => {
+        {combinedWords.map((wordObj, index) => {
           return (
-            <motion.span key={word + index} className="opacity-0">
-              {word}{' '}
+            <motion.span
+              key={wordObj.word + index}
+              className={`opacity-0 ${wordObj.isSpan ? 'text-[#00cc76]' : ''}`}
+            >
+              {wordObj.word}{' '}
             </motion.span>
           );
         })}
@@ -47,7 +68,7 @@ export const TextGenerateEffect = ({
   };
 
   return (
-    <div className={className}>
+    <div className={cn(isPageTitle && pageTitleStyle, className)}>
       <div className="leading-snug tracking-wide">{renderWords()}</div>
     </div>
   );

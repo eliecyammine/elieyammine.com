@@ -1,25 +1,23 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+
+import { GeistMono } from 'geist/font/mono';
+import { GeistSans } from 'geist/font/sans';
 
 import { DESCRIPTION, DOMAIN, TITLE } from '@/lib/constants/site';
 import { cn } from '@/lib/utils';
 
+import DevMessage from '@/ui/components/others/DevMessage';
 import { TailwindIndicator } from '@/ui/components/others/TailwindIndicator';
 import { ThemeToggle } from '@/ui/components/others/ThemeToggle';
 import { ThemeProvider } from '@/ui/components/providers/ThemeProvider';
 
 import '@/ui/styles/globals.css';
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-});
-
 /// ---------- || METADATA || ---------- ///
 
 export const metadata: Metadata = {
   title: {
-    default: TITLE,
+    default: `${TITLE} | ${DESCRIPTION}`,
     template: `%s | ${TITLE}`,
   },
 
@@ -38,7 +36,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: {
-      default: TITLE,
+      default: `${TITLE} | ${DESCRIPTION}`,
       template: `%s | ${TITLE}`,
     },
 
@@ -78,10 +76,16 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn(GeistSans.variable, GeistMono.variable, 'antialiased')}
+    >
+      <head>
+        <link rel="icon" href="/images/memoji/face.png" sizes="any" />
+      </head>
 
-      <body className={cn(inter.className, 'antialiased')}>
+      <body>
         <ThemeProvider>
           <div className="min-h-screen flex-1 overflow-y-auto">{children}</div>
 
@@ -89,6 +93,8 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
 
           <TailwindIndicator />
         </ThemeProvider>
+
+        <DevMessage />
       </body>
     </html>
   );

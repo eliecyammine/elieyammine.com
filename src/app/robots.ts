@@ -1,3 +1,5 @@
+import { DOMAIN } from '@/lib/constants/site';
+
 /// ---------- || ROBOTS || ---------- ///
 
 export default function robots() {
@@ -8,8 +10,8 @@ export default function robots() {
       },
     ],
 
-    host: 'https://elieyammine.com',
+    host: DOMAIN,
 
-    // sitemap: 'https://elieyammine.com/sitemap.xml',
+    sitemap: `${DOMAIN}/sitemap.xml`,
   };
 }

@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 import { ChevronLeftIcon } from 'lucide-react';
 
+import { createClient } from '@/lib/providers/supabase/server';
 import { cn } from '@/lib/utils';
 
 import { buttonVariants } from '@/ui/components/core/shadcn-ui/button';
@@ -14,7 +16,17 @@ interface PortalAuthLayoutProps {
 
 /// ---------- || PORTAL AUTH LAYOUT || ---------- ///
 
-export default function PortalAuthLayout({ children }: Readonly<PortalAuthLayoutProps>) {
+export default async function PortalAuthLayout({ children }: Readonly<PortalAuthLayoutProps>) {
+  const supabase = createClient();
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (session) {
+    return redirect('/portal');
+  }
+
   return (
     <>
       <Link

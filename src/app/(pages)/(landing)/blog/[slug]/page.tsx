@@ -7,17 +7,20 @@ import { TextGenerateEffect } from '@/ui/components/core/aceternity-ui/text-gene
 /// ---------- || METADATA || ---------- ///
 
 export const metadata: Metadata = {
-  title: 'Projects',
+  title: 'Blog Post',
 
   description: DESCRIPTION,
 };
 
-/// ---------- || PROJECTS PAGE || ---------- ///
+/// ---------- || BLOG POST PAGE || ---------- ///
 
-export default function ProjectsPage() {
+export default function BlogPostPage() {
   return (
     <div className="flex flex-col">
-      <TextGenerateEffect text="👨🏻‍💻 What I've" spanText="Built!" isPageTitle />
+      <TextGenerateEffect
+        text="Blog Post Details"
+        className="text-center text-2xl font-bold md:text-3xl lg:text-4xl"
+      />
     </div>
   );
 }

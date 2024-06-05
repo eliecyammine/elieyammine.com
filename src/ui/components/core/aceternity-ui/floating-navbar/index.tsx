@@ -6,11 +6,13 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { DownloadIcon, GanttChartIcon, XIcon } from 'lucide-react';
+import { GanttChartIcon, XIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
 import { Separator } from '@/ui/components/core/shadcn-ui/separator';
+
+import ResumeButtonCTA from './resume-button-cta';
 
 export const FloatingNavbar = ({
   navItems,
@@ -54,7 +56,7 @@ export const FloatingNavbar = ({
 
   const handleMouseDown = () => {
     const timer = setTimeout(() => {
-      router.push('/portal/login');
+      router.push('/portal');
     }, 1000);
     setPressTimer(timer);
   };
@@ -84,7 +86,7 @@ export const FloatingNavbar = ({
             duration: 0.2,
           }}
           className={cn(
-            'fixed inset-x-0 top-5 mx-6 flex max-w-fit items-center justify-center rounded-full border border-transparent bg-background py-2 pl-5 pr-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] dark:border-border sm:top-10 sm:mx-auto sm:space-x-4',
+            'fixed inset-x-0 top-5 mx-6 flex max-w-fit items-center justify-center rounded-full border border-transparent bg-background/95 py-2 pl-5 pr-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] backdrop-blur supports-[backdrop-filter]:bg-background/70 dark:border-border sm:top-10 sm:mx-auto sm:space-x-4',
             className,
           )}
         >
@@ -134,20 +136,7 @@ export const FloatingNavbar = ({
             </div>
           ))}
 
-          <button
-            onClick={() => {
-              console.log('Resume Downloaded!');
-            }}
-            className="relative !cursor-pointer rounded-full border border-border px-4 py-2 text-sm font-medium hover:bg-accent"
-          >
-            <div className="flex flex-row items-center gap-2">
-              <DownloadIcon size={16} />
-
-              <span>Resume</span>
-            </div>
-
-            <span className="absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
-          </button>
+          <ResumeButtonCTA />
         </motion.div>
 
         {active && (

@@ -20,14 +20,11 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <div className="flex flex-col">
-      <TextGenerateEffect
-        words="📝 My Blog Space!"
-        className="text-center text-2xl font-bold md:text-3xl lg:text-4xl"
-      />
+      <TextGenerateEffect text="📝 My" spanText="Blog Space!" isPageTitle />
 
       <TextGenerateEffect
-        words="Diving into tech, trends, and tales."
-        className="m-4 mb-6 text-center text-sm text-neutral-600 dark:text-neutral-400 md:text-lg lg:text-xl"
+        text="Diving into tech, trends, and tales."
+        className="text-basic mb-6 text-center text-neutral-600 dark:text-neutral-400 md:text-lg lg:text-xl"
       />
 
       <ImagesGrid />
